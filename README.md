@@ -1,6 +1,6 @@
 # StickyNotebooks
 
-StickyNotebooks is a new way to organize your thoughts to help you collect text, gather your research, write brainstorms, and be prepared with the subset of information you need. Picture Evernote, but with additional drag-and-drop views that help you pull together subsets of your notes for simultaneous viewing. Picture Mac Stickies, but with tabbable views that help you deep-dive on topics of your interest.
+StickyNotebooks are a new way to organize your thoughts to help you collect text, gather your research, write brainstorms, and be prepared with the subset of information you need. Picture Evernote, but with additional drag-and-drop views that help you pull together subsets of your notes for simultaneous viewing. Picture Mac Stickies, but with tabbable views that help you deep-dive on topics of your interest.
 
 Project started 8/24/22.
 
