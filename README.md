@@ -45,7 +45,7 @@ StickyNotebook View Components:
 - TextStylingPane
 - StickyNotebookBody
 
-## Data Model - Conceptual Design
+## Data Model
 
 ### Common User Flow
 
@@ -75,7 +75,7 @@ StickyView <-> StickyNotebook (many-to-many)
 
 - id
 - color
-- tabs (a list of objects)
+- tabs (a list of embedded documents)
   - title (calculated and maintained using the text body)
   - formattedTextBody (markdown-style syntax. default font: Avenir)
   - currentTabVisibleInStickyNotebook
@@ -93,9 +93,14 @@ StickyView <-> StickyNotebook (many-to-many)
 - id
 - name
 - StickyNotebooks (a list with additional metadata)
+  - StickyNotebook (ObjectId of the StickyNotebook)
   - width
   - height
   - (top, left) (position of top-left corner using CSS top/left properties)
   - currentTabVisibleInStickyView
   - minimized (true or false)
 - user (the ObjectId of the owner)
+
+### MongoDB Implementation Discussion
+
+coming soon...
