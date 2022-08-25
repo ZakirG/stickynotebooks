@@ -78,7 +78,7 @@ StickyView <-> StickyNotebook (many-to-many)
 - tabs (a list of embedded documents)
   - title (calculated and maintained using the text body)
   - formattedTextBody (markdown-style syntax. default font: Avenir)
-  - currentTabVisibleInStickyNotebook
+  - currentTabVisibleInNotebookView (index of the tab to show in notebook view)
   - mediaToServe (a list of ObjectId references to UploadedImage. the formattedTextBody determines the placement and size)
 - user (the ObjectId of the owner)
 
@@ -97,7 +97,7 @@ StickyView <-> StickyNotebook (many-to-many)
   - width
   - height
   - (top, left) (position of top-left corner using CSS top/left properties)
-  - currentTabVisibleInStickyView
+  - currentTabVisibleInStickyView (index of the tab to show in sticky view)
   - minimized (true or false)
 - user (the ObjectId of the owner)
 
