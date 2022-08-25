@@ -4,7 +4,7 @@ StickyNotebooks are a new way to organize your thoughts to help you collect text
 
 Project started 8/24/22.
 
-StickyNotebooks will be a React / Express.js project.
+StickyNotebooks will be a React / Express.js / MongoDB project.
 
 ## Current project status:
 
