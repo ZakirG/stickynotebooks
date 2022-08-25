@@ -49,7 +49,7 @@ StickyNotebook View Components:
 
 ### Common User Flow
 
-A user creates a StickyNotebook. It is initialized with 1 tab. They enter text into that tab, style it and embed images or sounds. On a different page, they can collect StickyNotebooks they've created into StickyViews, where they can drag and resize their StickyNotebooks.
+A user creates a StickyNotebook. It is initialized with 1 tab. They enter text into that tab, style it and embed images (or sounds in the future). On a different page, they can collect StickyNotebooks they've created into StickyViews, where they can drag and resize their StickyNotebooks.
 
 ### Entities involved
 
