@@ -79,6 +79,13 @@ StickyView <-> StickyNotebook (many-to-many)
   - title (calculated and maintained using the text body)
   - formattedTextBody (markdown-style syntax. default font: Avenir)
   - currentTabVisibleInStickyNotebook
+  - mediaToServe (a list of ObjectId references to UploadedImage. the formattedTextBody determines the placement and size)
+- user (the ObjectId of the owner)
+
+#### UploadedImage
+
+- id
+- filepath (temporary solution; in the future can use an s3 url instead)
 - user (the ObjectId of the owner)
 
 #### StickyView
