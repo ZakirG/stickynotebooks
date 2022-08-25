@@ -10,10 +10,10 @@ StickyNotebooks will be a React / Express.js / MongoDB project.
 
 - Still in the planning stage.
 
-## App description:
+## App Feature Goals:
 
 - On the homepage you can see a searchable, sortable list of your StickyNotebook previews. You click on one and it takes you to that StickyNotebook page.
-- The StickyNotebook page is a tabbed interface of text blocks. It's easy to create new tabs inside of a single StickyNotebook that collect related information (the "Notebook" view of a StickyNotebook). Default font: Avenir.
+- The StickyNotebook page is a tabbed interface of text blocks. It's easy to create new tabs inside of a single StickyNotebook that collect related information (the "Notebook" view of a StickyNotebook).
 - You can create "Views" that place certain StickyNotebooks side by side (the "Sticky" view of a StickyNotebook). You can adjust the size and location of each StickyNotebook inside the view. These views can be accessed and created via the left-side panel of the nav.
 - The first line of every StickyNotebook is treated as the title and presented in a larger font size.
 - Choose a color for each StickyNotebook from a range of tastefully-selected colors representing a pastel color palette.
@@ -33,7 +33,7 @@ Nav Components viewable on all pages:
 
 Homepage Components:
 
-- Searching Pane (full-text search, searches the contents of ALL notes reliably, unlike Mac Stickies)
+- Searching Pane (full-text search, searches the contents of all notes reliably)
 - Sorting Pane (sort by color, contents, creation date, or custom)
 - StickyNotebooksListView (the wrapper holding StickyNotebook previews)
 - StickyNotebookPreviewListItem
@@ -77,7 +77,7 @@ StickyView <-> StickyNotebook (many-to-many)
 - color
 - tabs (a list of objects)
   - title (calculated and maintained using the text body)
-  - formattedTextBody (markdown-style syntax)
+  - formattedTextBody (markdown-style syntax. default font: Avenir)
   - currentTabVisibleInStickyNotebook
 - user (the ObjectId of the owner)
 
