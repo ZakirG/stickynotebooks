@@ -6,6 +6,10 @@ Project started 8/24/22.
 
 StickyNotebooks will be a React / Express.js project.
 
+## Current project status:
+
+- Still in the planning stage.
+
 ## App description:
 
 - On the homepage you can see a searchable, sortable list of your StickyNotebook previews. You click on one and it takes you to that StickyNotebook page.
@@ -41,16 +45,50 @@ StickyNotebook View Components:
 - TextStylingPane
 - StickyNotebookBody
 
-## Available Scripts
+## Data Model - Conceptual Design
 
-In the project directory, you can run:
+### Common User Flow
 
-### `npm start`
+A user creates a StickyNotebook. It is initialized with 1 tab. they enter text into that tab. style that text and embed images or sounds. create new tabs.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Entities involved
 
-### `npm test`
+User, StickyNotebook, UploadedImage, StickyView
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Relationships
+
+User -> StickyNotebook (one-to-many)
+
+StickyNotebook -> UploadedImage (one-to-many)
+
+StickyView <-> StickyNotebook (many-to-many)
+
+### Entity Attributes
+
+#### User
+
+- id
+- username
+- hashed password (with bcrypt via Auth0)
+
+#### StickyNotebook
+
+- id
+- color
+- tabs (a list of objects)
+  - title (calculated and maintained using the text body)
+  - formattedTextBody (markdown-style syntax)
+  - currentTabVisibleInStickyNotebook
+- user (the ObjectId of the owner)
+
+#### StickyView
+
+- id
+- name
+- StickyNotebooks (a list with additional metadata)
+  - width
+  - height
+  - (top, left) (position of top-left corner using CSS top/left properties)
+  - currentTabVisibleInStickyView
+  - minimized (true or false)
+- user (the ObjectId of the owner)
