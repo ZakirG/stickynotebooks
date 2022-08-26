@@ -14,42 +14,52 @@ StickyNotebooks will be a React / Express.js / MongoDB project.
 
 - On the homepage you can see a searchable, sortable list of your StickyNotebook previews. You click on one and it takes you to that StickyNotebook page.
 - The StickyNotebook page is a tabbed interface of text blocks. It's easy to create new tabs inside of a single StickyNotebook that collect related information (the "Notebook" view of a StickyNotebook).
-- You can create "Views" that place certain StickyNotebooks side by side (the "Sticky" view of a StickyNotebook). You can adjust the size and location of each StickyNotebook inside the view. These views can be accessed and created via the left-side panel of the nav.
+- You can create "StickyViews" that place certain StickyNotebooks side by side (the "Sticky" view of a StickyNotebook). In the StickyView creator, search for notes of interest and add them to the StickyView. You can adjust the size and location of each StickyNotebook inside the view. These views can be accessed and created via the left-side panel of the nav.
 - The first line of every StickyNotebook is treated as the title and presented in a larger font size.
 - Choose a color for each StickyNotebook from a range of tastefully-selected colors representing a pastel color palette.
 
 ## Technical Goals:
 
-Make a React App that demonstrates common intermediate-level design patterns like higher-order components, custom hooks, component composition, recursive components, and layout components, building on and applying what I learned in the LinkedIn React Design Patterns course. Apply these patterns only after the core app structure is laid out to avoid premature optimizations. Demonstrate branded UI design.
+Make a React App that demonstrates common intermediate-level design patterns like higher-order components, custom hooks, component composition, recursive components, and layout components, building on and applying what I learned in the LinkedIn React Design Patterns course. Demonstrate branded UI design.
 
 ## React Component Architecture
 
-Nav Components viewable on all pages:
+#### Nav Components:
 
-- File/Edit nav pane with import/export/download features
-- Left Sidebar that contains "Views" or "StickyNotebook Workspaces"
-- App logo
+- NavPane (File/Edit nav pane with import/export/download features, App Logo, logged-in user details)
+- ControlSidebar (that allows users to switch between "Notebooks" and "StickyViews")
 - Footer
 
-Homepage Components:
+#### NotebookBrowser Components:
 
-- Searching Pane (full-text search, searches the contents of all notes reliably)
-- Sorting Pane (sort by color, contents, creation date, or custom)
-- StickyNotebooksListView (the wrapper holding StickyNotebook previews)
-- StickyNotebookPreviewListItem
+- NotebookBrowser
+  - SearchTool (full-text search, searches the contents of all notes)
+  - SortTool (sort by color, contents, creation date, or custom)
+  - StickyNotebooksListView (the wrapper holding StickyNotebook previews, clicking on one takes you to the Notebook view)
+    - StickyNotebookPreviewListItem (a truncated preview of the StickyNotebook's plainTextBody)
 
-StickyNotebook View Components:
+#### StickyNotebook Components:
 
-- TabPane
-- TabSelector
-- TextStylingPane
-- StickyNotebookBody
+- StickyNotebookPage
+  - StickyNotebookNav (return to the StickyNotebookBrowser)
+  - StickyNotebook (wrapper that expands to the size of the parent)
+    - TabSelector (wrapper holding tabs)
+      - Tab (individual tab to be clicked on)
+    - StickyNotebookBody (wrapper holding the text body with editing features)
+      - TextStylingPane (font size, bold, underline, italicize)
+      - FormattedEditableText
+
+#### StickyView Components:
+
+- StickyView (large wrapper window with background)
+  - StickyViewTool (ability to create a new StickyNotebook)
+  - SearchTool (reused from NotebookBrowser)
+  - StickyNotebooksListView (reused from NotebookBrowser)
+    - StickyNotebookPreviewListItem (reused from NotebookBrowser)
+  - Sticky (a size-adjustable, draggable display of the StickyNotebook)
+    - StickyNotebook (with all its children components reused)
 
 ## Data Model
-
-### Common User Flow
-
-A user creates a StickyNotebook. It is initialized with 1 tab. They enter text into that tab, style it and embed images (or sounds in the future). On a different page, they can collect StickyNotebooks they've created into StickyViews, where they can drag and resize their StickyNotebooks.
 
 ### Entities involved
 
