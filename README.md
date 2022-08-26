@@ -78,6 +78,7 @@ StickyView <-> StickyNotebook (many-to-many)
 - tabs (a list of embedded documents)
   - title (calculated and maintained using the text body)
   - formattedTextBody (markdown-style syntax. default font: Avenir)
+  - plainTextBody (duplicating some data in order to support full-text search. needs a text index)
   - currentTabVisibleInNotebookView (index of the tab to show in notebook view)
   - mediaToServe (a list of ObjectId references to UploadedImage. the formattedTextBody determines the placement and size)
 - user (the ObjectId of the owner)
@@ -103,4 +104,9 @@ StickyView <-> StickyNotebook (many-to-many)
 
 ### MongoDB Implementation Discussion
 
-coming soon...
+We'll need to add a "text index" on the plainTextBody to support full text search. Unfortunately, this only supports keyword searching -- partial word searches won't work.
+`{ $text : {$search : "phrase to locate"}}`
+
+We choose to embed the individual tabs of a StickyNotebook inside of the StickyNotebook document, rather than storing them in separate documents. When a user opens a notebook, they'll switch tabs freely, so we'll want all that data accessed together. We can ensure quick read-times with an embed.
+
+In the proposed data structure, opening a StickyView will consistently result in $lookups to obtain the text body of the member StickyNotebooks, which is a relatively expensive operation, although one StickyView is likely to have less than 10 members. We could avoid lookups by duplicating the text body of member StickyNotebooks inside of all StickyView parents, but when a user edits a StickyNotebook from the StickyView, we'd then need to perform a lookup to edit the text body in the StickyNotebook document anyway, and maintain that data in other StickyViews where the text body is present. The [MongoDB docs](https://www.mongodb.com/developer/products/mongodb/schema-design-anti-pattern-massive-arrays/) recommend to avoid duplicating data that will be frequently updated. So we choose to keep the StickyNotebook text body only in the StickyNotebook document.
