@@ -1,4 +1,4 @@
-This project was shelved. I planned it and decided not to build it, for now. Might revisit this later with Replit etc.
+This project was shelved. Decided not to build it for now. Might revisit this later with Replit etc.
 ----------
 # StickyNotebooks
 
